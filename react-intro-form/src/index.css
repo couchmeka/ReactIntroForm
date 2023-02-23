@@ -32,5 +32,12 @@ tbody{
 
 input {
   width: 75%;
+  padding: 12px 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
   
+}
+
+tr:hover {
+  background-color: rgb(208, 202, 42);
 }
