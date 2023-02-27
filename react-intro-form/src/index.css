@@ -17,17 +17,24 @@ thead {
 }
 
 button {
-  background-color: coral;
+  background-color: rgb(43, 34, 124);
+  color: aliceblue;
 }
 
 form {
   background-color: rgb(128, 110, 192);
   border-style: dotted;
+
+}
+
+input {
+  align-items: center;
 }
 
 tbody{
 
   border-style: dotted;
+  background-color: rgb(209, 156, 204);
 }
 
 input {
@@ -35,9 +42,26 @@ input {
   padding: 12px 10px;
   margin: 5px 0;
   box-sizing: border-box;
+  text-align: center;
   
 }
 
+label {
+  text-align: center;
+  font-weight: 800;
+  color:aliceblue
+}
+
 tr:hover {
-  background-color: rgb(208, 202, 42);
+  background-color: rgb(230, 193, 222);
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flexbox;
+  text-align: center;
+  vertical-align: middle;
 }

@@ -6,7 +6,8 @@ import React, { Component } from 'react';
 
     constructor(props){
         super(props); //inheriting props from component.
-
+        let newDate =  Date()
+    
         //set the initial state of the Form
         this.initalState = {
             title:'',
@@ -15,12 +16,16 @@ import React, { Component } from 'react';
             imdbRating: '',
             director:'',
             year: '',
-            dateAdded: Date()
+            dateAdded: newDate
         };
 
         //set our initial state to state.
         this.state = this.initalState;
     }
+
+    //runs after the components are rendered
+
+
 
     handleChange = event => {
         //get name and value out of target (element that changed)
@@ -38,10 +43,27 @@ import React, { Component } from 'react';
         //set the current state of our form to the handle submit
         this.props.addMovie(this.state);
     
-         //clear inputs by setting form to initial state
-        this.setState(this.initalState);
+         //clear inputs by setting form to initial state and updates the date
+        this.setState(
+        
+            this.initalState = {
+                title:'',
+                actors: '',
+                plot: '',
+                imdbRating: '',
+                director:'',
+                year: '',
+                dateAdded: Date()
+            }
+
+            
+        );
     
+       
+
         }
+
+    
 
     render(){
         const { title, actors, plot, imdbRating,director,year,dateAdded } = this.state;

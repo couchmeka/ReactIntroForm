@@ -127,7 +127,7 @@ addMovie = movie => {
         render (){
         return (
     <div>
-       
+       <h1>Movie Form</h1>
         <MovieForm addMovie ={this.addMovie}/>
         <Table movieData={this.state.movies} 
         removeMovie = {this.removeMovie}/>
