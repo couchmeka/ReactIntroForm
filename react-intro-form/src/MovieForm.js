@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 
     constructor(props){
         super(props); //inheriting props from component.
-        let newDate =  Date()
+        
     
         //set the initial state of the Form
         this.initalState = {
@@ -16,7 +16,7 @@ import React, { Component } from 'react';
             imdbRating: '',
             director:'',
             year: '',
-            dateAdded: newDate
+            dateAdded: Date()
         };
 
         //set our initial state to state.
@@ -25,6 +25,23 @@ import React, { Component } from 'react';
 
     //runs after the components are rendered
 
+    componentDidMount() {
+        this.timerID = setInterval(
+          () => this.tick(),
+          1000
+        );
+      }
+// runs after when component is destroyed
+      componentWillUnmount() {
+        clearInterval(this.timerID);
+      }
+
+      //local helper function to get time
+      tick() {
+        this.setState({
+          dateAdded: Date()
+        });
+      }
 
 
     handleChange = event => {
@@ -44,6 +61,8 @@ import React, { Component } from 'react';
         this.props.addMovie(this.state);
     
          //clear inputs by setting form to initial state and updates the date
+
+         
         this.setState(
         
             this.initalState = {
@@ -60,6 +79,10 @@ import React, { Component } from 'react';
         );
     
        
+
+
+
+        
 
         }
 
