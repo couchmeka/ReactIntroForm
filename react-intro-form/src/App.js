@@ -1,14 +1,16 @@
 
 import MovieForm from './MovieForm'
 import Table from './Table'
-import React, { Component } from 'react'
+import Search from './Search'
+import {useState} from 'react'
 
 
-class App extends Component  {
+function App ()  {
     
 
-    state = {
-       movies : [{
+     
+      const movieData = [
+        {
           title: "The Godfather",
           actors: ["Marlon Brando", "Al Pacino", "James Caan"],
           plot: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
@@ -99,44 +101,75 @@ class App extends Component  {
           year: 1990,
         },
     ]
+
+   const [movies, setMovies] = useState(movieData)
+
+    const [searchInput, setSearchInput] = useState({});
+    const [searchField] = useState("title");
+
+function handleSearch () {
+     
+    
+  const movieFilter = movies.filter((movie) => {
+    
+    return movie[searchField].includes(searchInput)
+
+})
+  setMovies(movieFilter)
+  
 }
 
+function handleChange (event) {
+  
+  event.preventDefault()
+  setSearchInput(event.target.value);
 
-removeMovie = (index) => {
+  
+};
+
+
+
+const removeMovie  = (index) => {
     //now that we've defined this.state, we can use 
-        const { movies } = this.state 
-
-        // we can use setState to update the state 
-        this.setState({
-            // remove character at passed in index by returning 
-            // a new list excluding that character
-            movies: movies.filter((_, i) => {
+       
+            const filteredMovies = movies.filter((_, i) => {
                 return i !== index
-            }),
-        })
-    } 
+            })
+            setMovies(filteredMovies)
+        }
+     
 
-
-addMovie = movie => {
-        
-    this.setState({movies: [...this.state.movies, movie ]})
-  } 
+    
    
+
+
+    
+
+const addMovie = (movie) => {
+        
+    setMovies([...movies, movie ])
+  }
+
+
     
     
-        render (){
+        
+         
         return (
-    <div>
+    <div className='App'>
        <h1>Movie Form</h1>
-        <MovieForm addMovie ={this.addMovie}/>
-        <Table movieData={this.state.movies} 
-        removeMovie = {this.removeMovie}/>
+        <MovieForm addMovie ={addMovie}/>
+        <Table movieData={movies} 
+        removeMovie = {removeMovie} />
+        <Search movieData ={movies} handleSearch = {handleSearch} handleChange = {handleChange}/>
+       
+        
     </div>
     
         )
     
 
-}
+
 
 }
 export default App

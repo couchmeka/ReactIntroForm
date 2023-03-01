@@ -1,16 +1,27 @@
 import React, { Component } from 'react'
 
+
+
+
+
+
+
+
+
+
+
 const TableHeader = () => {
     return (
       <thead>
         <tr>
-          <th>title</th>
-            <th>actors</th>
-            <th>plot</th>
+          <th>Title</th>
+            <th>Actors</th>
+            <th>Plot</th>
             <th>imdbRating</th>
-            <th>director</th>
-            <th>year</th>
-            <th>dateAdded</th>
+            <th>Director</th>
+            <th>Year</th>
+            <th>DateAdded</th>
+            <th> Delete </th>
         </tr>
       </thead>
     );
@@ -29,6 +40,7 @@ const TableBody = (props) => {
 
     const rows = props.data.map((row, index) => {
 
+     
     return (      
     <tr key ={index}>
     <td>{row.title}</td>
@@ -40,12 +52,17 @@ const TableBody = (props) => {
     <td>{row.dateAdded}</td>
     <td><button onClick={() => props.removeMovie(index)}>Delete</button></td>
     
+   
+    
+    
     </tr>
             )      
 
     })
     
-    return <tbody>{rows}</tbody>
+    return <tbody>
+      {rows}
+    </tbody>
 
 }
 
@@ -53,16 +70,19 @@ class Table extends Component {
     render() {
   
       //read props passed in from App.js
-  const {movieData, removeMovie} = this.props;
+  const {movieData, removeMovie, addMovie } = this.props;
   
       return (
         <table>
      <TableHeader/>
-     <TableBody data = {movieData} removeMovie = {removeMovie}
+     <TableBody data = {movieData}  removeMovie = {removeMovie} addMovie = {addMovie}
      />
+    
         </table>
       )
     }
   }
 
 export default Table
+
+
