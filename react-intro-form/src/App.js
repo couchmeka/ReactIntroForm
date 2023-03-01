@@ -102,22 +102,27 @@ function App ()  {
         },
     ]
 
-   const [movies, setMovies] = useState(movieData)
-
+    //useStates
+    const [movies, setMovies] = useState(movieData);
     const [searchInput, setSearchInput] = useState({});
     const [searchField] = useState("title");
+
+
 
 function handleSearch () {
      
     
   const movieFilter = movies.filter((movie) => {
     
-    return movie[searchField].includes(searchInput)
+    return movie[searchField].toLowerCase().includes(searchInput.toLowerCase())
 
 })
   setMovies(movieFilter)
   
 }
+
+
+
 
 function handleChange (event) {
   

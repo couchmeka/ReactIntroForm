@@ -11,7 +11,7 @@ import React, { Component } from 'react';
         //set the initial state of the Form
         this.initalState = {
             title:'',
-            actors: '',
+            actors: [],
             plot: '',
             imdbRating: '',
             director:'',
