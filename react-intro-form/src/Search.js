@@ -3,10 +3,11 @@
 
 
 
+
 function Search (props) { 
 
-  
-  
+ 
+
   return (
     
     <div>
@@ -16,6 +17,7 @@ function Search (props) {
    placeholder="Search here"
    onChange={props.handleChange}
    value={props.searchInput}/>
+   <label htmlFor="title"></label>
 <button onClick={props.handleSearch}> Search</button>
    </div>
    
